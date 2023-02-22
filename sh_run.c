@@ -62,7 +62,6 @@ char *cmd_exists(char *cmd)
 
 	if (cmd != NULL)
 	{
-
 		env_path = _get_env("PATH", environ);
 		env_cpy = malloc(sizeof(char) * _strlen(env_path) + 1);
 		strcpy(env_cpy, env_path);
@@ -70,7 +69,6 @@ char *cmd_exists(char *cmd)
 
 		if (cmd[0] == '/')
 		{
-			/* command is a full path */
 			if (stat(cmd, &info) != 0)
 			{
 				/* If file does not exist, return to prompt */
@@ -78,13 +76,11 @@ char *cmd_exists(char *cmd)
 			}
 			return (cmd);
 		}
-
 		for (i = 0; i < _pstrlen(path); i++)
 		{
 			catstrs[0] = path[i];
 			catstrs[1] =  "/";
 			catstrs[2] = cmd;
-
 			_path = _strcat(catstrs);
 			if (stat(_path, &info) == 0)
 			{
