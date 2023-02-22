@@ -57,6 +57,7 @@ char *cmd_exists(char *cmd)
 	char *env_cpy;
 	char **path;
 	char *_path;
+	char *catstrs[3];
 	struct stat info;
 
 	if (cmd != NULL)
@@ -80,7 +81,9 @@ char *cmd_exists(char *cmd)
 
 		for (i = 0; i < _pstrlen(path); i++)
 		{
-			char *catstrs[] = {path[i], "/", cmd};
+			catstrs[0] = path[i];
+			catstrs[1] =  "/";
+			catstrs[2] = cmd;
 
 			_path = _strcat(catstrs);
 			if (stat(_path, &info) == 0)
