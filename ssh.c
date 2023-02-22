@@ -4,12 +4,11 @@
  * main - Entry point for shell
  * @argc: no of arguments
  * @argv: arguments
- * @envp: environment variables
  *
  * Return: 0
  */
 
-int main(__attribute__((unused)) int argc,char **argv)
+int main(__attribute__((unused)) int argc, char **argv)
 {
 	char *line;
 	char **cmds;
