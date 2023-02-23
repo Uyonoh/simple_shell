@@ -112,7 +112,7 @@ void create_process(char *cmd, char **args, char **argv)
 	if (pid == 0)
 	{
 		/*  within child process */
-		if (execve(cmd, args, NULL) == -1)
+		if (execve(cmd, args, environ) == -1)
 		{
 			/* execution error */
 			perror(argv[0]);
