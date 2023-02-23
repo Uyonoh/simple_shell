@@ -38,7 +38,7 @@ int sh_run(char **args, char **argv)
 	}
 
 	/* create child process, execute command and return to prompt */
-	create_process(cmd, args);
+	create_process(cmd, args, argv);
 	return (1);
 }
 
@@ -101,7 +101,7 @@ char *cmd_exists(char *cmd)
  *Return: void
  */
 
-void create_process(char *cmd, char **args)
+void create_process(char *cmd, char **args, char **argv)
 {
 	pid_t pid;
 	int status;
@@ -114,7 +114,7 @@ void create_process(char *cmd, char **args)
 		if (execve(cmd, args, NULL) == -1)
 		{
 			/* execution error */
-			perror(cmd);
+			perror(argv[0]);
 		}
 	} else if (pid < 0)
 	{

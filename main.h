@@ -25,7 +25,7 @@ int _strslen(char **strings);
 int _pstrlen(char **strings);
 char *cmd_exists(char *cmd);
 int run_built_in(char *built_in, char **args);
-void create_process(char *cmd, char **args);
+void create_process(char *cmd, char **args, char **argv);
 int _bcd(char **dir);
 int _bexit(char **status);
 int _bhelp(char *);
