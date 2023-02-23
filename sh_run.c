@@ -97,6 +97,7 @@ char *cmd_exists(char *cmd)
  * create_process - create a child process and execute a command
  * @cmd: command
  * @args: arguments to command
+ * @argv: main arg variable
  *
  *Return: void
  */
