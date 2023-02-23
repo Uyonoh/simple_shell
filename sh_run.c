@@ -37,7 +37,7 @@ int sh_run(char **args)
 	}
 
 	/* create child process, execute command and return to prompt */
-	create_process(cmd, args);
+	status = create_process(cmd, args);
 	return (1);
 }
 
@@ -100,7 +100,7 @@ char *cmd_exists(char *cmd)
  *Return: void
  */
 
-void create_process(char *cmd, char **args)
+int create_process(char *cmd, char **args)
 {
 	pid_t pid;
 	int status;
@@ -115,14 +115,13 @@ void create_process(char *cmd, char **args)
 			/* execution error */
 			perror("Error");
 		}
-	} else if (pid < 0)
-	{
-		/* forking error */
-		perror("Error");
-	} else
+	} else 
 	{
 		/* within parent process */
 		/* wait for child process */
 		wait(&status);
+		if (WIFEXITED(status))
+			status = WEXITSTATUS(status);
 	}
+	return (status);
 }
