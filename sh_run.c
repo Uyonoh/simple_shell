@@ -115,12 +115,13 @@ void create_process(char *cmd, char **args, char **argv)
 		if (execve(cmd, args, environ) == -1)
 		{
 			/* execution error */
-			perror(argv[0]);
+			perror("Error");
+			printf("%s\n", argv[0]);
 		}
 	} else if (pid < 0)
 	{
 		/* forking error */
-		perror("fork");
+		perror("Error");
 	} else
 	{
 		/* within parent process */
