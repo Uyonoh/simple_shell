@@ -12,7 +12,7 @@
 /* Prototypes */
 char *sh_read_line(void);
 char **sh_get_cmds(char *line);
-int sh_run(char **cmds, char **argv);
+int sh_run(char **cmds);
 char **_tokenize(char *str, char *delim);
 char *_get_env(char *env, char *envp[]);
 int envlen(char *envp[]);
@@ -26,7 +26,7 @@ int _strslen(char **strings);
 int _pstrlen(char **strings);
 char *cmd_exists(char *cmd);
 int run_built_in(char *built_in, char **args);
-void create_process(char *cmd, char **args, char **argv);
+void create_process(char *cmd, char **args);
 int _bcd(char **dir);
 int _bexit(char **status);
 int _bhelp(char *);

@@ -8,7 +8,7 @@
  * Return: 0
  */
 
-int main(__attribute__((unused)) int argc, char **argv)
+int main(__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
 {
 	char *line;
 	char **cmds;
@@ -29,7 +29,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 		}
 
 		cmds = _tokenize(line, " ");
-		status = sh_run(cmds, argv);
+		status = sh_run(cmds);
 	} while (status == 1);
 
 	_exit(status);

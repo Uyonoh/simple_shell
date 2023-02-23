@@ -3,12 +3,11 @@
 /**
  * sh_run - exectues the given command
  * @args: command input
- * @argv: main args variables
  *
  * Return: 1 or 0
  */
 
-int sh_run(char **args, char **argv)
+int sh_run(char **args)
 {
 	int status;
 	char *cmd;
@@ -33,12 +32,12 @@ int sh_run(char **args, char **argv)
 	if (!cmd)
 	{
 		/* if cmd does not exist return to prompt */
-		perror(argv[0]);
+		perror("Error");
 		return (1);
 	}
 
 	/* create child process, execute command and return to prompt */
-	create_process(cmd, args, argv);
+	create_process(cmd, args);
 	return (1);
 }
 
@@ -97,12 +96,11 @@ char *cmd_exists(char *cmd)
  * create_process - create a child process and execute a command
  * @cmd: command
  * @args: arguments to command
- * @argv: main arg variable
  *
  *Return: void
  */
 
-void create_process(char *cmd, char **args, char **argv)
+void create_process(char *cmd, char **args)
 {
 	pid_t pid;
 	int status;
@@ -116,7 +114,6 @@ void create_process(char *cmd, char **args, char **argv)
 		{
 			/* execution error */
 			perror("Error");
-			printf("%s\n", argv[0]);
 		}
 	} else if (pid < 0)
 	{
